@@ -1,31 +1,44 @@
 import { cargarDatos, esc, tnum } from './comun.js';
 
-const lista = document.getElementById('cursos');
+const main = document.getElementById('cursos');
+const F = '<svg class="ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const LIBRO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>';
+const nTemas = c => c.temas.length + (c.web ? c.web.temas || 0 : 0);
+
 try {
   const datos = await cargarDatos();
   // /2bach-quimica → solo ese curso
   const ruta = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean)[0];
   const solo = ruta && datos.cursos.find(c => c.ruta === ruta);
+  let cursos = datos.cursos;
   if (solo) {
-    datos.cursos = [solo];
+    cursos = [solo];
     document.title = `${solo.etiqueta} · ${solo.materia} · mariancr`;
-    document.getElementById('tit-materias').textContent = `${solo.etiqueta} · ${solo.materia}`;
     document.body.className = document.body.className.replace(/\bcurso-\S+/g, '').trim() + ' curso-' + solo.curso;
+    document.getElementById('ojo').innerHTML = `<a href="/">Clases</a> · ${esc(solo.nivel)}`;
+    document.getElementById('titulo').textContent = solo.materia;
+    const n = nTemas(solo);
+    document.getElementById('lema').textContent = n ? `${n} tema${n === 1 ? '' : 's'} con apuntes, ejercicios y presentaciones.` : 'Muy pronto tendrás aquí los temas del curso.';
   }
-  lista.innerHTML = datos.cursos.map(c => {
-    const n = c.temas.length + (c.web ? 1 : 0);
-    const nt = c.temas.length + (c.web ? c.web.temas || 0 : 0);
-    const estado = n ? `<span class="chip-temas">${nt} tema${nt === 1 ? '' : 's'}</span>` : '<span class="pronto">Próximamente</span>';
-    const web = c.web ? `<li class="web-curso"><a href="${esc(c.web.url)}"><b>★</b><span><strong>${esc(c.web.nombre)}</strong><small>${esc(c.web.texto)}</small></span><em>Abrir la web →</em></a></li>` : '';
-    const temas = n
-      ? web + c.temas.map(t => `<li><a href="/${c.ruta}/${tnum(t.numero)}"><b>${t.numero}</b>${esc(t.titulo)}</a></li>`).join('')
-      : '<li class="vacio">Aún no hay temas publicados.</li>';
-    return `<li><details class="curso-fila curso-${c.curso}"${n ? ' open' : ''}>
-      <summary data-tab="${esc(c.etiqueta)}"><img class="curso-fila__ico" src="/img/simbolo-${c.curso}.svg" alt="">
-        <div><div class="curso-fila__t">${esc(c.materia)}</div><div class="curso-fila__s">${esc(c.nivel)}</div></div>
-        <div class="curso-fila__der">${estado}<span class="flecha" aria-hidden="true"></span></div></summary>
-      <ol class="lista-temas">${temas}</ol></details></li>`;
-  }).join('');
+  // Atajos de curso en el héroe
+  document.getElementById('saltos').innerHTML = datos.cursos.map(c =>
+    `<a class="salto curso-${c.curso}${solo === c ? ' activo' : ''}" href="/${c.ruta}"><img src="/img/simbolo-${c.curso}.svg" alt=""><span><b>${esc(c.etiqueta)}</b>${esc(c.materia)}</span></a>`).join('');
+
+  const conTemas = cursos.filter(nTemas), sin = cursos.filter(c => !nTemas(c));
+  main.innerHTML = conTemas.map(c => {
+    const web = c.web ? `<a class="tarjeta tarjeta--web" href="${esc(c.web.url)}"><span class="tarjeta__num">★</span>
+        <span class="tarjeta__txt"><b>${esc(c.web.nombre)}</b><small>${esc(c.web.texto)}</small></span><span class="tarjeta__pie">Abrir la web ${F}</span></a>` : '';
+    const temas = c.temas.map(t => `<a class="tarjeta" href="/${c.ruta}/${tnum(t.numero)}"><span class="tarjeta__num">${t.numero}</span>
+        <span class="tarjeta__txt"><b>${esc(t.titulo)}</b><small>${t.secciones.map(s => esc(s.titulo)).join(' · ')}</small></span>
+        <span class="tarjeta__pie">${t.libro ? `<span class="libro">${LIBRO}Libro interactivo</span>` : ''}${F}</span></a>`).join('');
+    return `<section class="curso curso-${c.curso}" id="${c.ruta}">
+      <a class="curso__cab" href="/${c.ruta}"><img src="/img/simbolo-${c.curso}.svg" alt="">
+        <span><span class="curso__nivel">${esc(c.nivel)}</span><span class="curso__materia">${esc(c.materia)}</span></span>
+        <span class="curso__n">${nTemas(c)} tema${nTemas(c) === 1 ? '' : 's'}</span></a>
+      <div class="tarjetas">${web}${temas}</div></section>`;
+  }).join('') + (sin.length ? `<section class="pronto-cursos"><h2 class="mcr-seccion">Muy pronto</h2><div class="pronto-lista">${
+    sin.map(c => `<div class="pronto-curso curso-${c.curso}"><img src="/img/simbolo-${c.curso}.svg" alt=""><span><b>${esc(c.etiqueta)}</b>${esc(c.materia)}</span><span class="pronto">Próximamente</span></div>`).join('')
+  }</div></section>` : '');
 } catch (e) {
-  lista.innerHTML = '<li class="mcr-vacio">No se han podido cargar los cursos. Recarga la página.</li>';
+  main.innerHTML = '<p class="mcr-vacio">No se han podido cargar los cursos. Recarga la página.</p>';
 }

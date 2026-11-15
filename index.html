@@ -4,25 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>mariancr · Clases</title>
-<meta name="description" content="Apuntes, resúmenes, ejercicios y actividades de Ciencias: ESO y Bachillerato.">
+<meta name="description" content="Apuntes, ejercicios, presentaciones y libros interactivos de Ciencias: ESO y Bachillerato.">
+<meta name="theme-color" content="#1E293B">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="https://marca.mariancr.es/mariancr.css">
 <link rel="stylesheet" href="/css/web.css">
+<link rel="stylesheet" href="/css/clases.css">
 </head>
 <body class="mcr mcr-app curso-general">
 <header class="mcr-barra"><a class="mcr-barra__marca" href="/"><img src="/img/logo-negativo.svg" alt="mariancr"><span class="mcr-barra__nombre">Clases</span></a>
   <div class="mcr-barra__usuario"><a class="mcr-btn mcr-btn--peq" href="https://mariancr.es/">mariancr.es</a></div></header>
-<section class="mcr-trama-banda"><div class="mcr-contenedor mcr-hero hero-portada">
-       <h1 class="hero-logo"><img src="/img/logo-negativo.svg" alt="Marian CR"></h1>
-       <div class="hero-txt"><div class="ojo">Clases · ESO y Bachillerato</div>
-       <p id="lema">Apuntes, ejercicios, presentaciones y libros interactivos de cada tema.</p></div>
-     </div></section>
-<main class="mcr-contenedor" style="padding-bottom:32px">
-  <h2 class="mcr-seccion" id="tit-materias">Materias</h2>
-  <ul class="indice-cursos" id="cursos"><li class="cargando">Cargando…</li></ul>
-</main>
+<section class="mcr-trama-banda heroe"><div class="mcr-contenedor heroe__in" id="heroe">
+  <div class="ojo" id="ojo">Clases · ESO y Bachillerato</div>
+  <h1 id="titulo">Tus clases,<br>tema a tema</h1>
+  <p id="lema">Apuntes, ejercicios, presentaciones y libros interactivos. Elige tu curso.</p>
+  <nav class="saltos" id="saltos" aria-label="Cursos"></nav>
+</div></section>
+<main class="mcr-contenedor clases" id="cursos"><p class="cargando">Cargando…</p></main>
 <footer class="mcr-pie-app">mariancr · Clases</footer>
 <script type="module" src="/js/portada.js"></script>
 </body>

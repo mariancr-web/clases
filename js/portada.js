@@ -25,20 +25,28 @@ try {
     `<a class="salto curso-${c.curso}${solo === c ? ' activo' : ''}" href="/${c.ruta}"><img src="/img/simbolo-${c.curso}.svg" alt=""><span><b>${esc(c.etiqueta)}</b>${esc(c.materia)}</span></a>`).join('');
 
   const conTemas = cursos.filter(nTemas), sin = cursos.filter(c => !nTemas(c));
+  // Cursos abiertos (se recuerdan en este navegador)
+  const CLAVE = 'clases-abiertos';
+  let abiertos = [];
+  try { abiertos = JSON.parse(localStorage.getItem(CLAVE)) || []; } catch (e) {}
   main.innerHTML = conTemas.map(c => {
     const web = c.web ? `<a class="tarjeta tarjeta--web" href="${esc(c.web.url)}"><span class="tarjeta__num">★</span>
         <span class="tarjeta__txt"><b>${esc(c.web.nombre)}</b><small>${esc(c.web.texto)}</small></span><span class="tarjeta__pie">Abrir la web ${F}</span></a>` : '';
     const temas = c.temas.map(t => `<a class="tarjeta" href="/${c.ruta}/${tnum(t.numero)}"><span class="tarjeta__num">${t.numero}</span>
         <span class="tarjeta__txt"><b>${esc(t.titulo)}</b><small>${t.secciones.map(s => esc(s.titulo)).join(' · ')}</small></span>
         <span class="tarjeta__pie">${t.libro ? `<span class="libro">${LIBRO}Libro interactivo</span>` : ''}${F}</span></a>`).join('');
-    return `<section class="curso curso-${c.curso}" id="${c.ruta}">
-      <a class="curso__cab" href="/${c.ruta}"><img src="/img/simbolo-${c.curso}.svg" alt="">
+    return `<details class="curso curso-${c.curso}" id="${c.ruta}" data-ruta="${c.ruta}"${solo || abiertos.includes(c.ruta) ? ' open' : ''}>
+      <summary class="curso__cab"><img src="/img/simbolo-${c.curso}.svg" alt="">
         <span><span class="curso__nivel">${esc(c.nivel)}</span><span class="curso__materia">${esc(c.materia)}</span></span>
-        <span class="curso__n">${nTemas(c)} tema${nTemas(c) === 1 ? '' : 's'}</span></a>
-      <div class="tarjetas">${web}${temas}</div></section>`;
+        <span class="curso__n">${nTemas(c)} tema${nTemas(c) === 1 ? '' : 's'}</span><span class="curso__flecha" aria-hidden="true"></span></summary>
+      <div class="tarjetas">${web}${temas}</div></details>`;
   }).join('') + (sin.length ? `<section class="pronto-cursos"><h2 class="mcr-seccion">Muy pronto</h2><div class="pronto-lista">${
     sin.map(c => `<div class="pronto-curso curso-${c.curso}"><img src="/img/simbolo-${c.curso}.svg" alt=""><span><b>${esc(c.etiqueta)}</b>${esc(c.materia)}</span><span class="pronto">Próximamente</span></div>`).join('')
   }</div></section>` : '');
+  if (!solo) main.addEventListener('toggle', () => {
+    const ab = [...main.querySelectorAll('details.curso[open]')].map(d => d.dataset.ruta);
+    try { localStorage.setItem(CLAVE, JSON.stringify(ab)); } catch (e) {}
+  }, true);
 } catch (e) {
   main.innerHTML = '<p class="mcr-vacio">No se han podido cargar los cursos. Recarga la página.</p>';
 }

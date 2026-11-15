@@ -1,6 +1,6 @@
-# mariancr · web de materias
+# clases.mariancr.es · web de materias
 
-Web estática (sin compilación) publicada en Vercel desde el repositorio `mariancr-web/mariancr`.
+Web estática (sin compilación) publicada en Vercel (proyecto «clases», dominio clases.mariancr.es) desde el repositorio `mariancr-web/clases`. Las rutas antiguas de mariancr.es redirigen aquí (301).
 
 - `index.html`: portada con los cursos (desplegable de temas) y los recursos.
 - `tema.html`: página de un tema (`/2bach-quimica/t01`). Los PDF se abren en un visor dentro de la web y se leen de **Google Drive**.

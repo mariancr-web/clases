@@ -9,7 +9,7 @@ try {
   if (!tema) throw new Error('no');
   ponerCurso(curso.curso);
   document.title = `${tema.numero} · ${tema.titulo} · ${curso.etiqueta} · mariancr`;
-  cab.innerHTML = `<div class="migas"><a href="/">Inicio</a> / ${esc(curso.etiqueta)} · ${esc(curso.materia)} / <b>Tema ${tema.numero}</b></div>
+  cab.innerHTML = `<div class="migas"><a href="/">Clases</a> / <a href="/${curso.ruta}">${esc(curso.etiqueta)} · ${esc(curso.materia)}</a> / <b>Tema ${tema.numero}</b></div>
     <div class="tema-cab"><span class="num-tema">${tema.numero}</span><div><div class="ojo">Tema ${tema.numero}</div><h1>${esc(tema.titulo)}</h1></div></div>`;
 
   const libro = tema.libro

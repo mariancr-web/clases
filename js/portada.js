@@ -3,6 +3,15 @@ import { cargarDatos, esc, tnum } from './comun.js';
 const lista = document.getElementById('cursos');
 try {
   const datos = await cargarDatos();
+  // /2bach-quimica → solo ese curso
+  const ruta = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean)[0];
+  const solo = ruta && datos.cursos.find(c => c.ruta === ruta);
+  if (solo) {
+    datos.cursos = [solo];
+    document.title = `${solo.etiqueta} · ${solo.materia} · mariancr`;
+    document.getElementById('tit-materias').textContent = `${solo.etiqueta} · ${solo.materia}`;
+    document.body.className = document.body.className.replace(/\bcurso-\S+/g, '').trim() + ' curso-' + solo.curso;
+  }
   lista.innerHTML = datos.cursos.map(c => {
     const n = c.temas.length;
     const estado = n ? `<span class="chip-temas">${n} tema${n === 1 ? '' : 's'}</span>` : '<span class="pronto">Próximamente</span>';

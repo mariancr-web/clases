@@ -356,6 +356,66 @@
        ]
       }
      ]
+    },
+    {
+     "numero": 6,
+     "id": "2bach-quim-t06",
+     "titulo": "Equilibrio químico",
+     "libro": "/temas/2bach-quim-t06/libro.html",
+     "actividades": "2bach-quim-t06",
+     "secciones": [
+      {
+       "titulo": "Teoría",
+       "materiales": [
+        {
+         "titulo": "Apuntes",
+         "drive": "1B6iFMQVpnXKoynpmPppmlsCvaHclGqji"
+        },
+        {
+         "titulo": "Resumen",
+         "drive": "1EIEYON9zn-vp_jStWUUdDaJcHVMOXkMB"
+        },
+        {
+         "titulo": "Repaso final",
+         "drive": "1S1GM3yc4Ibg_axIodJm0Q7cEs0tkvy5l"
+        }
+       ]
+      },
+      {
+       "titulo": "Ejercicios",
+       "materiales": [
+        {
+         "titulo": "Teoría",
+         "sub": "Para completar",
+         "drive": "1BL499-mYhRcwNzSExV4QDgMmWcQHdOMU"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Solo enunciados",
+         "drive": "19sdWi2eWRYU2axbsX4Xw4uAlee38DOBX"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Resueltos",
+         "drive": "1MWMvbiQpF1IRuxqbD7XsYVYoem9PSG-C"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Selectividad",
+         "drive": "11AZiVEFVr-3LH7B3W4eoBx4uCMUxrf-Z"
+        }
+       ]
+      },
+      {
+       "titulo": "Presentación",
+       "materiales": [
+        {
+         "titulo": "Presentación",
+         "drive": "1DUYhOSibsXp1zkvQ5-6Rea_wH-AtlknK"
+        }
+       ]
+      }
+     ]
     }
    ]
   }

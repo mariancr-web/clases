@@ -416,6 +416,66 @@
        ]
       }
      ]
+    },
+    {
+     "numero": 7,
+     "id": "2bach-quim-t07",
+     "titulo": "Reacciones ácido-base",
+     "libro": "/temas/2bach-quim-t07/libro.html",
+     "actividades": "2bach-quim-t07",
+     "secciones": [
+      {
+       "titulo": "Teoría",
+       "materiales": [
+        {
+         "titulo": "Apuntes",
+         "drive": "18ua3FXYq3-cagbjp_pzcul_0ZhGg_u5N"
+        },
+        {
+         "titulo": "Resumen",
+         "drive": "1n5BezUKVCqTBRL2cKSrgMPG_13nrIJeF"
+        },
+        {
+         "titulo": "Repaso final",
+         "drive": "1SGY3FBgpWdIDV4rN4TnEHCtqjoQrjayb"
+        }
+       ]
+      },
+      {
+       "titulo": "Ejercicios",
+       "materiales": [
+        {
+         "titulo": "Teoría",
+         "sub": "Para completar",
+         "drive": "1SBLhRF4743-obt8avUt0k8PiNbcBDd7q"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Solo enunciados",
+         "drive": "16wgfOUAoJmE3ZFK_KF7vFp1nW3HDnSdf"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Resueltos",
+         "drive": "1m9SvYUdLPXznAQu0Yplto5SQWlE-0lB_"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Selectividad",
+         "drive": "1tmHXAoQMjvj8JymJYaimFW0OFYO6tM9W"
+        }
+       ]
+      },
+      {
+       "titulo": "Presentación",
+       "materiales": [
+        {
+         "titulo": "Presentación",
+         "drive": "1f1aGpISTOV1xHLXJlZi2pIkM2v8QxzMy"
+        }
+       ]
+      }
+     ]
     }
    ]
   }

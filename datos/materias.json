@@ -1,22 +1,4 @@
 {
- "recursos": [
-  {
-   "nombre": "Actividades",
-   "url": "https://actividades.mariancr.es/"
-  },
-  {
-   "nombre": "Clase en directo",
-   "url": "https://directo.mariancr.es/"
-  },
-  {
-   "nombre": "Test",
-   "url": "https://test.mariancr.es/"
-  },
-  {
-   "nombre": "Muro",
-   "url": "https://muro.mariancr.es/"
-  }
- ],
  "cursos": [
   {
    "curso": "1eso",
@@ -24,7 +6,13 @@
    "nivel": "1.º ESO",
    "materia": "Biología y Geología",
    "ruta": "1eso-biogeo",
-   "temas": []
+   "temas": [],
+   "web": {
+    "nombre": "Bioacademy",
+    "url": "https://bioacademy.mariancr.es/",
+    "temas": 4,
+    "texto": "Temas 3 a 6: moneras, protoctistas y hongos · plantas · animales invertebrados · animales vertebrados. Apuntes, ejercicios y misiones."
+   }
   },
   {
    "curso": "2eso",

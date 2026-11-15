@@ -13,10 +13,12 @@ try {
     document.body.className = document.body.className.replace(/\bcurso-\S+/g, '').trim() + ' curso-' + solo.curso;
   }
   lista.innerHTML = datos.cursos.map(c => {
-    const n = c.temas.length;
-    const estado = n ? `<span class="chip-temas">${n} tema${n === 1 ? '' : 's'}</span>` : '<span class="pronto">Próximamente</span>';
+    const n = c.temas.length + (c.web ? 1 : 0);
+    const nt = c.temas.length + (c.web ? c.web.temas || 0 : 0);
+    const estado = n ? `<span class="chip-temas">${nt} tema${nt === 1 ? '' : 's'}</span>` : '<span class="pronto">Próximamente</span>';
+    const web = c.web ? `<li class="web-curso"><a href="${esc(c.web.url)}"><b>★</b><span><strong>${esc(c.web.nombre)}</strong><small>${esc(c.web.texto)}</small></span><em>Abrir la web →</em></a></li>` : '';
     const temas = n
-      ? c.temas.map(t => `<li><a href="/${c.ruta}/${tnum(t.numero)}"><b>${t.numero}</b>${esc(t.titulo)}</a></li>`).join('')
+      ? web + c.temas.map(t => `<li><a href="/${c.ruta}/${tnum(t.numero)}"><b>${t.numero}</b>${esc(t.titulo)}</a></li>`).join('')
       : '<li class="vacio">Aún no hay temas publicados.</li>';
     return `<li><details class="curso-fila curso-${c.curso}"${n ? ' open' : ''}>
       <summary data-tab="${esc(c.etiqueta)}"><img class="curso-fila__ico" src="/img/simbolo-${c.curso}.svg" alt="">
@@ -24,8 +26,6 @@ try {
         <div class="curso-fila__der">${estado}<span class="flecha" aria-hidden="true"></span></div></summary>
       <ol class="lista-temas">${temas}</ol></details></li>`;
   }).join('');
-  document.getElementById('recursos').innerHTML = datos.recursos.map(r =>
-    `<a class="recurso" href="${esc(r.url)}"><img src="/img/simbolo-general.svg" alt="">${esc(r.nombre)}</a>`).join('');
 } catch (e) {
   lista.innerHTML = '<li class="mcr-vacio">No se han podido cargar los cursos. Recarga la página.</li>';
 }

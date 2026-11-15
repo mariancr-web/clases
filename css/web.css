@@ -126,3 +126,10 @@
 }
 @media (max-width:420px){.mats{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Web propia de un curso (p. ej. Bioacademy en 1.º ESO) */
+.lista-temas .web-curso a{gap:14px;padding:14px 0}
+.web-curso b{font-size:20px}
+.web-curso span{display:grid;gap:2px}
+.web-curso strong{font:700 17px var(--font-marca)}
+.web-curso small{font:400 14px var(--font-cuerpo,inherit);color:var(--gris-web);line-height:1.4}
+.web-curso em{margin-left:auto;font:600 13px var(--font-marca);font-style:normal;color:var(--texto);white-space:nowrap}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>mariancr · Flipbook (prueba)</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://marca.mariancr.es/mariancr.css">
+<link rel="stylesheet" href="/css/web.css">
+<link rel="stylesheet" href="flipbook.css">
+</head>
+<body class="mcr mcr-app curso-2bach fb">
+<header class="mcr-barra"><a class="mcr-barra__marca" href="/"><img src="/img/logo-negativo.svg" alt="mariancr"><span class="mcr-barra__nombre">Clases</span></a>
+  <div class="mcr-barra__usuario"><a class="mcr-btn mcr-btn--peq" href="/2bach-quimica">← Química 2.º Bach</a></div></header>
+
+<div class="fb-cab">
+  <div class="fb-cab__tit"><span class="ojo">Tema 8 · Apuntes · Prueba de flipbook</span><strong id="titulo"></strong></div>
+  <div class="fb-herr" role="toolbar" aria-label="Herramientas del libro">
+    <button class="fb-btn" id="b-indice" type="button" aria-expanded="false"><span aria-hidden="true">☰</span> Índice</button>
+    <button class="fb-btn" id="b-mini" type="button" aria-expanded="false"><span aria-hidden="true">▦</span> Páginas</button>
+    <button class="fb-btn" id="b-lupa" type="button"><span aria-hidden="true">⌕</span> Ampliar</button>
+    <button class="fb-btn" id="b-pantalla" type="button"><span aria-hidden="true">⛶</span> <span class="fb-ocultable">Pantalla completa</span></button>
+  </div>
+</div>
+
+<main class="fb-escena" id="escena">
+  <button class="fb-flecha fb-flecha--ant" id="b-ant" type="button" aria-label="Página anterior">‹</button>
+  <div class="fb-libro-caja"><div id="libro" class="fb-libro"></div></div>
+  <button class="fb-flecha fb-flecha--sig" id="b-sig" type="button" aria-label="Página siguiente">›</button>
+</main>
+
+<div class="fb-pie">
+  <input type="range" id="barra" min="1" value="1" aria-label="Ir a la página">
+  <span class="fb-num" id="num">1 / 1</span>
+</div>
+
+<aside class="fb-panel" id="p-indice" hidden aria-label="Índice">
+  <div class="fb-panel__cab"><strong>Índice</strong><button class="fb-cerrar" type="button" data-cierra aria-label="Cerrar">✕</button></div>
+  <ol class="fb-toc" id="toc"></ol>
+</aside>
+<aside class="fb-panel fb-panel--ancho" id="p-mini" hidden aria-label="Todas las páginas">
+  <div class="fb-panel__cab"><strong>Todas las páginas</strong><button class="fb-cerrar" type="button" data-cierra aria-label="Cerrar">✕</button></div>
+  <div class="fb-minis" id="minis"></div>
+</aside>
+
+<div class="fb-lupa" id="lupa" hidden role="dialog" aria-modal="true" aria-label="Página ampliada">
+  <div class="fb-lupa__barra">
+    <button class="fb-btn" id="l-ant" type="button">‹ Anterior</button>
+    <span id="l-num"></span>
+    <button class="fb-btn" id="l-sig" type="button">Siguiente ›</button>
+    <button class="fb-btn fb-btn--prim" id="l-cerrar" type="button">✕ Cerrar</button>
+  </div>
+  <div class="fb-lupa__scroll" id="l-scroll"><div class="fb-lupa__hoja" id="l-hoja"></div></div>
+</div>
+
+<script src="page-flip.browser.js"></script>
+<script src="datos.js"></script>
+<script src="flipbook.js"></script>
+</body>
+</html>

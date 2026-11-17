@@ -1,0 +1,67 @@
+/* clases.mariancr.es · página de tema (después de clases.css) */
+.ico{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.tema-heroe{padding-block:28px 72px}
+.tema-titulo{display:flex;align-items:center;gap:22px;margin-top:18px}
+.tema-num{font:700 clamp(84px,13vw,140px)/.8 var(--font-marca);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px var(--acento);text-shadow:6px 6px 0 color-mix(in srgb,var(--acento) 35%,transparent)}
+.tema-titulo h1{font:600 clamp(30px,4.6vw,52px)/1.05 var(--font-titulos);color:#fff;margin:6px 0 0;letter-spacing:-.015em}
+.tema-heroe .heroe__acc{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tema-heroe .heroe__acc .mcr-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;font-size:15px;background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.tema-heroe .heroe__acc .mcr-btn--prim{background:var(--acento);border-color:var(--acento);color:var(--sobre-acento)}
+.tema-heroe .heroe__acc .mcr-btn:hover{border-color:#fff}
+.tema-main{padding-block:0 48px}
+
+/* Libro destacado */
+.libro-destacado{position:relative;margin-top:-44px;display:flex;align-items:center;gap:18px;padding:22px 24px;border-radius:14px;color:#fff;text-decoration:none;background:linear-gradient(120deg,var(--acento),color-mix(in srgb,var(--acento) 60%,#0F172A));box-shadow:0 22px 40px -26px var(--acento);overflow:hidden;transition:transform .18s}
+.libro-destacado::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:14px 14px;mask-image:linear-gradient(110deg,transparent 45%,#000);pointer-events:none}
+.libro-destacado:hover{transform:translateY(-3px)}
+.libro-destacado__ico{width:58px;height:58px;border-radius:14px;background:#fff;color:var(--texto);display:grid;place-items:center;flex:none}
+.libro-destacado__ico .ico{width:30px;height:30px}
+.libro-destacado__txt{display:grid;gap:3px}
+.libro-destacado .ojo{color:rgba(255,255,255,.85)}
+.libro-destacado b{font:700 22px var(--font-marca)}
+.libro-destacado small{font-size:15px;opacity:.92;line-height:1.4}
+.libro-destacado__btn{position:relative;z-index:1;margin-left:auto;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;background:#fff;color:var(--texto);font:700 15px var(--font-marca);white-space:nowrap}
+
+/* Secciones de materiales */
+.grupo-tema{margin-top:30px}
+.grupo-tema__tit{display:flex;align-items:center;gap:12px;font:700 22px var(--font-marca);color:var(--tinta);margin:0}
+.grupo-tema__tit small{font:700 12px var(--font-marca);color:var(--texto);background:var(--suave);border-radius:999px;padding:3px 9px}
+.grupo-tema__ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--acento) 14%,#fff);color:var(--texto)}
+.grupo-tema__ico .ico{width:22px;height:22px}
+.pdfs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:14px}
+.pdf-tarjeta{position:relative;display:flex;background:var(--papel);border:1px solid var(--borde-web);border-radius:12px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.pdf-tarjeta:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--acento) 55%,var(--borde-web));box-shadow:0 14px 26px -18px var(--acento)}
+.pdf-tarjeta__abrir{flex:1;display:flex;align-items:center;gap:14px;padding:16px;background:none;border:0;font:inherit;color:var(--tinta);text-align:left;cursor:pointer;min-width:0;border-radius:12px}
+.pdf-tarjeta__doc{position:relative;width:42px;height:52px;flex:none;border-radius:6px 14px 6px 6px;background:var(--acento);color:var(--sobre-acento);display:grid;place-items:end center;padding-bottom:7px;font:800 11px var(--font-marca);letter-spacing:.06em}
+.pdf-tarjeta__doc::before{content:"";position:absolute;top:0;right:0;width:14px;height:14px;background:color-mix(in srgb,#fff 45%,var(--acento));border-radius:0 12px 0 6px}
+.pdf-tarjeta__txt{display:grid;gap:2px;min-width:0}
+.pdf-tarjeta__txt b{font:700 16px var(--font-marca)}
+.pdf-tarjeta__txt small{color:var(--gris-web);font-size:13px}
+.pdf-tarjeta__ver{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font:600 13px var(--font-marca);color:var(--texto);opacity:0;transform:translateX(-4px);transition:opacity .18s,transform .18s}
+.pdf-tarjeta:hover .pdf-tarjeta__ver{opacity:1;transform:none}
+.pdf-tarjeta__bajar{display:grid;place-items:center;width:46px;border-left:1px solid var(--borde-web);color:var(--gris-web);border-radius:0 12px 12px 0;transition:color .18s,background .18s}
+.pdf-tarjeta__bajar:hover{color:var(--texto);background:var(--suave)}
+.pdf-tarjeta--pronto{background:var(--fondo-grupo);border-style:dashed}
+.pdf-tarjeta--pronto:hover{transform:none;box-shadow:none;border-color:var(--borde-web)}
+.pdf-tarjeta--pronto .pdf-tarjeta__abrir{cursor:default}
+.pdf-tarjeta--pronto .pdf-tarjeta__doc{background:#CBD5E1;color:#fff}
+.pdf-tarjeta--pronto .pdf-tarjeta__doc::before{background:#E2E8F0}
+
+/* Tema anterior / siguiente */
+.pasar-tema{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.pasar-tema a{display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid var(--borde-web);border-radius:12px;background:var(--papel);color:var(--tinta);text-decoration:none;font:700 16px var(--font-marca);transition:border-color .18s,transform .18s}
+.pasar-tema a:hover{border-color:var(--acento);transform:translateY(-2px)}
+.pasar-tema a.sig{justify-content:flex-end;text-align:right}
+.pasar-tema span{display:grid;gap:2px}
+.pasar-tema small{font:600 11px var(--font-marca);letter-spacing:.12em;text-transform:uppercase;color:var(--gris-web)}
+.pasar-tema .ico{color:var(--texto)}
+
+@media (max-width:640px){
+  .tema-heroe{padding-block:22px 64px}
+  .tema-titulo{gap:14px}
+  .libro-destacado{flex-wrap:wrap;padding:18px}
+  .libro-destacado__btn{margin-left:0}
+  .pdfs{grid-template-columns:1fr}
+  .pdf-tarjeta__ver{opacity:1;transform:none}
+  .pasar-tema{grid-template-columns:1fr}
+}
